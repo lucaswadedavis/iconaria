@@ -14,7 +14,7 @@ var app={m:{},v:{},c:{}};
 
 app.c.init=function(){
 	app.m.password=false;
-	app.m.metadata={"name":"Iconic","version":"0.0.2"};
+	app.m.metadata={"name":"Iconaria","version":"0.0.2"};
 	var b=app.c.bounds();
 	app.m.genome={};
 	app.m.genome.r=[];
@@ -37,7 +37,7 @@ app.c.listeners=function(){
 
 	$("input#clear").on("click",function(){
 		$("div#icons").html("");
-		for (var i=0;i<5;i++){
+		for (var i=0;i<3;i++){
 			var iconWidth=$("input[name=size]:checked").val();
 			iconWidth=parseInt(iconWidth);
 			app.v.icon("div#icons",iconWidth);
@@ -75,7 +75,7 @@ app.v.init=function(){
 	app.v.style();
 	var b=app.m.bounds;
 	var d="";
-	d+="<input type='text' value='Iconic'>";
+	d+="<input type='text' value='Iconaria'>";
 	d+="<div id='radios'><form actio=''>";
 
 		d+="<table><tr>";
@@ -96,7 +96,7 @@ app.v.init=function(){
 	var iconWidth=$("input[name=size]:checked").val();
 	iconWidth=parseInt(iconWidth);
 	//console.log(iconWidth);
-	for (var i=0;i<5;i++){
+	for (var i=0;i<3;i++){
 		app.v.icon("div#icons",iconWidth);
 	}
 };
@@ -113,7 +113,7 @@ app.v.icon=function(target,width){
 	$("div#icons canvas#"+id).on("click",function(){
 		
 		$("div#saved").prepend(this);
-		if ($("div#icons > canvas").size()<5){
+		if ($("div#icons > canvas").size()<3){
 			var iconWidth=$("input[name=size]:checked").val();
 			iconWidth=parseInt(iconWidth);
 			app.v.icon("div#icons",iconWidth);
@@ -127,18 +127,6 @@ app.v.icon=function(target,width){
 		    }
 		});
 
-
-		//send it to the database
-		if (app.m.password!=false){
-		var dataURL=document.getElementById(id).toDataURL();
-		$.ajax({
-			  type: "POST",
-			  url: "http://peopleofthebit.com/luke_davis/labs/iconic/php/createRecord.php",
-			  data: {image:dataURL,password:app.m.password}
-			}).done(function(o) {
-			  //console.log('saved');
-			});
-		}
 
 	});
 	c=document.getElementById(id);
@@ -401,7 +389,7 @@ app.v.style=function(){
 		"margin":"0px",
 		"padding":"0px",
 		"text-align":"center",
-		"background":"#ddd"
+		"background":"#eee"
 	});
 	davis.style("canvas",{
 		"margin":"20px",
